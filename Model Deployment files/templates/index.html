@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Abusive Detector</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<form method="post" action="{{ url_for('predict')}}" enctype = "multipart/form-data">
+  
+  <h4>choose you have single input or .CSV file </h4>
+  <div>
+    <div>
+      <input type="radio" name="choice-input-type" id="choice-single-input" required>
+      <label for="choice-single-input">Single string input</label>
+    
+      <div class="reveal-if-active">
+        <label for="which-text">enter your input</label>
+        <textarea name="message" rows="4" cols="50" class="require-if-active" data-require-pair="#choice-single-input"></textarea>
+      </div>
+    </div>
+    
+    <div>
+      <input type="radio" name="choice-input-type" id="choice-csv-input">
+      <label for="choice-csv-input">.csv file </label>
+    
+      <div class="reveal-if-active">
+        <label for="which-csv">choose your csv file</label>
+        <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"  id="which-csv" name="csv-file" class="require-if-active" data-require-pair="#choice-csv-input">
+      </div>
+    </div>
+  </div>
+  
+
+  
+  <div>
+    <input type="submit" value="Predict">
+    <input type="reset">
+  </div>
+      
+</form>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script src="{{url_for('static', filename='script.js')}}"></script>
+
+</body>
+</html>
